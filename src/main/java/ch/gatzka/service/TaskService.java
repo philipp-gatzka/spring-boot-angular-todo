@@ -42,9 +42,13 @@ public class TaskService {
         }
     }
 
-    public void update(Task task) {
-        log.info("Updating task: {}", task);
-        taskRepository.save(task);
+    public Task update(Long id, Task updatedTask) {
+        log.info("Updating task: {}", updatedTask);
+        Task task = getById(id);
+        task.setTitle(updatedTask.getTitle());
+        task.setDescription(updatedTask.getDescription());
+        task.setDone(updatedTask.getDone());
+        return taskRepository.save(task);
     }
 
 }

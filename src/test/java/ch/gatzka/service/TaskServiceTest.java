@@ -93,9 +93,8 @@ class TaskServiceTest {
     void givenValidTask_whenUpdate_thenTaskUpdated() {
         Task task = new Task("Test Task", "Test Description", false);
         Long id = taskService.save(task);
-        task.setId(id);
         task.setTitle("Updated Test Task");
-        taskService.update(task);
+        taskService.update(id, task);
         Task updatedTask = taskService.getById(id);
         assertEquals("Updated Test Task", updatedTask.getTitle());
     }
